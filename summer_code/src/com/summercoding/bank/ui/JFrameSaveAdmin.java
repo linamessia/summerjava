@@ -43,7 +43,8 @@ public class JFrameSaveAdmin extends javax.swing.JFrame {
         BoutonOK = new javax.swing.JButton();
         BoutonAnnuler = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Création Admin");
 
         jLabel1.setText("Login");
 
