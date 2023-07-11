@@ -23,21 +23,25 @@ public class JFrameSaveCompte2 extends javax.swing.JFrame {
     /**
      * Creates new form JFrameSaveCompte2
      */
-    public JFrameSaveCompte2() throws SQLException {
+    public JFrameSaveCompte2()  {
         initComponents();
         
         
         initOtherComponents();
     }
     
-    private void initOtherComponents() throws SQLException{
+    private void initOtherComponents() {
         
-        for(Admin admin: controlleur.routeVerslistAllAdmin()){
-            ComboBoxidadmin.addItem(admin.getIdAdmin()+" "+admin.getLogin());
-        }
-        
-        for(Utilisateur utilisateur: controlleur.routeVersListAllUtilisateur()){
-            ComboBoxiduser.addItem(utilisateur.getIduser()+" "+utilisateur.getLogin());
+        try {
+            for(Admin admin: controlleur.routeVerslistAllAdmin()){
+                ComboBoxidadmin.addItem(admin.getIdAdmin()+" "+admin.getLogin());
+            }
+            
+            for(Utilisateur utilisateur: controlleur.routeVersListAllUtilisateur()){
+                ComboBoxiduser.addItem(utilisateur.getIduser()+" "+utilisateur.getLogin());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrameSaveCompte2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -74,7 +78,7 @@ public class JFrameSaveCompte2 extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Veuillez fournir les informations demandées");
@@ -229,11 +233,7 @@ public class JFrameSaveCompte2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new JFrameSaveCompte2().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JFrameSaveCompte2.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new JFrameSaveCompte2().setVisible(true);
             }
         });
     }

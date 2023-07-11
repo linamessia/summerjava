@@ -6,6 +6,7 @@ package com.summercoding.bank.gestionnaires;
 
 import com.summercoding.bank.entities.Compte;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -17,5 +18,9 @@ public class GestionnaireCompte {
     
     public void saveCompte(double solde, int iduser, int idadmin) throws SQLException{
         compte.save(solde, iduser, idadmin);
+    }
+    
+    public List<Compte> listAllCompte() throws SQLException{
+        return compte.getAllCompte();
     }
 }

@@ -7,6 +7,8 @@ package com.summercoding.bank.ui;
 
 import com.summercoding.bank.controlleur.Controlleur;
 import com.summercoding.bank.entities.Admin;
+import com.summercoding.bank.entities.Compte;
+import com.summercoding.bank.entities.Utilisateur;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,6 +24,10 @@ public class JFrameHome extends javax.swing.JFrame {
      Controlleur controlleur = new Controlleur();
     
    JFrameSaveAdmin saveAdmin = new JFrameSaveAdmin();
+   
+   JFrameSavUtilisateur2 saveutilisateur = new JFrameSavUtilisateur2();
+   
+   JFrameSaveCompte2 savecompte = new JFrameSaveCompte2();
     /**
      * Creates new form JFrameHome
      */
@@ -103,9 +109,19 @@ public class JFrameHome extends javax.swing.JFrame {
         jMenu2.setText("Utilisateur");
 
         MenuCreerUtilisateur.setText("Créer");
+        MenuCreerUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCreerUtilisateurActionPerformed(evt);
+            }
+        });
         jMenu2.add(MenuCreerUtilisateur);
 
         MenuListerUtilisateur.setText("Lister");
+        MenuListerUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListerUtilisateurActionPerformed(evt);
+            }
+        });
         jMenu2.add(MenuListerUtilisateur);
 
         jMenuBar1.add(jMenu2);
@@ -113,9 +129,19 @@ public class JFrameHome extends javax.swing.JFrame {
         jMenu3.setText("Compte");
 
         MenuCreerCompte.setText("Créer");
+        MenuCreerCompte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCreerCompteActionPerformed(evt);
+            }
+        });
         jMenu3.add(MenuCreerCompte);
 
         MenuListerCompte.setText("Lister");
+        MenuListerCompte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListerCompteActionPerformed(evt);
+            }
+        });
         jMenu3.add(MenuListerCompte);
 
         jMenuBar1.add(jMenu3);
@@ -181,6 +207,55 @@ public class JFrameHome extends javax.swing.JFrame {
              Logger.getLogger(JFrameHome.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_MenuListerAdminActionPerformed
+
+    private void MenuCreerUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreerUtilisateurActionPerformed
+        // TODO add your handling code here:
+        saveutilisateur.setVisible(true);
+    }//GEN-LAST:event_MenuCreerUtilisateurActionPerformed
+
+    private void MenuListerUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListerUtilisateurActionPerformed
+         try {
+             // TODO add your handling code here:
+             List<Utilisateur> listUtilisateur = controlleur.routeVersListAllUtilisateur();
+             DefaultTableModel model1 = new DefaultTableModel() ;
+             model1.addColumn("Id");
+             model1.addColumn("Login");
+             model1.addColumn("Nom");
+             model1.addColumn("Prénom");
+             model1.addColumn("Date de naissance");
+             model1.addColumn("Genre");
+             
+             for(Utilisateur user: listUtilisateur){
+                 model1.addRow(new String[]{user.getIduser()+"", user.getLogin()+"", user.getNom()+"", user.getPrenom()+"", user.getDatenaiss()+"", user.getGenre()});
+             }
+             TableListeAdmin.setModel(model1);
+         } catch (SQLException ex) {
+             Logger.getLogger(JFrameHome.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_MenuListerUtilisateurActionPerformed
+
+    private void MenuCreerCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreerCompteActionPerformed
+        // TODO add your handling code here:
+        savecompte.setVisible(true);
+    }//GEN-LAST:event_MenuCreerCompteActionPerformed
+
+    private void MenuListerCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListerCompteActionPerformed
+         try {
+             // TODO add your handling code here:
+             List<Compte> listCompte = controlleur.routeVersListAllCompte();
+             DefaultTableModel model2 = new DefaultTableModel() ;
+             model2.addColumn("Idcompte");
+             model2.addColumn("Iduser");
+             model2.addColumn("Solde");
+             
+             for(Compte compte: listCompte){
+                 model2.addRow(new String[]{compte.getIdcompte()+"", compte.getIduser()+"", compte.getSolde()+""});
+             }
+             TableListeAdmin.setModel(model2);
+         }catch (SQLException ex) {
+             Logger.getLogger(JFrameHome.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_MenuListerCompteActionPerformed
 
     /**
      * @param args the command line arguments

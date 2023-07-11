@@ -83,7 +83,8 @@ public class JFrameSavUtilisateur2 extends javax.swing.JFrame {
         BoutonEnregistrer = new javax.swing.JButton();
         BoutonAnnuler = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Création d'un utilisateur");
 
         jLabel1.setText("Login");
 

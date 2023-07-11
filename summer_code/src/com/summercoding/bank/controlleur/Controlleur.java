@@ -5,6 +5,7 @@
 package com.summercoding.bank.controlleur;
 
 import com.summercoding.bank.entities.Admin;
+import com.summercoding.bank.entities.Compte;
 import com.summercoding.bank.entities.Utilisateur;
 import com.summercoding.bank.gestionnaires.GestionnaireAdmn;
 import com.summercoding.bank.gestionnaires.GestionnaireCompte;
@@ -56,5 +57,9 @@ public class Controlleur {
     
     public void routeVersSaveCompte(double solde, int iduser, int idadmin) throws SQLException{
         gestionnaireCompte.saveCompte(solde, iduser, idadmin);
+    }
+    
+    public List<Compte> routeVersListAllCompte() throws SQLException{
+        return gestionnaireCompte.listAllCompte();
     }
 }

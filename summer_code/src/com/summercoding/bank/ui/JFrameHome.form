@@ -36,11 +36,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cr&#xe9;er"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuCreerUtilisateurActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuListerUtilisateur">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lister"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuListerUtilisateurActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -53,11 +59,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cr&#xe9;er"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuCreerCompteActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuListerCompte">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lister"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuListerCompteActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
